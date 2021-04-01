@@ -1,0 +1,164 @@
+%----  Relevant files 
+
+InitCondFile	    ../ic/ics_MHDTurbulence_B0.25_256.dat
+OutputDir         ../output/mhd256B0.25M10/
+
+SnapshotFileBase    snap
+
+
+ST_decay	      0.05  % 0.5
+ST_energy	      10.0 % 0.0002   % sigma^2
+ST_DtFreq	      0.005
+ST_Kmin		      6.27
+ST_Kmax		      12.57
+ST_SolWeight  	1.
+ST_AmplFac	    1.     %50.
+ST_Seed		      42
+ST_SpectForm    2
+
+
+%---- File formats
+
+ICFormat                  3
+SnapFormat                3
+
+
+%---- CPU-time limits
+
+TimeLimitCPU              864000  % in seconds
+CpuTimeBetRestartFile     3600   % in seconds
+ResubmitOn                0
+ResubmitCommand           my-scriptfile 
+ 
+
+%----- Memory alloction
+
+MaxMemSize        3200      % sets maximum memory use in MByte
+%PartAllocFactor   3.5
+
+
+%----- Mesh regularization options
+
+%CellShapingFactor  0.2        % sets threshold for CM-displacement
+CellShapingSpeed    0.5        % sets speed of CM correction
+CellMaxAngleFactor  2.25            % maximum angle  
+
+
+%---- Caracteristics of run
+
+TimeBegin           0.0        % Begin of the simulation
+TimeMax	            2          % End of the simulation
+BoxSize             1.0
+
+
+%---- Basic code options that set the type of simulation
+
+ComovingIntegrationOn    0
+PeriodicBoundariesOn     1
+CoolingOn		             0
+StarformationOn		       0
+
+
+%---- Cosmological parameters
+
+Omega0	              0.0
+OmegaLambda           0.0
+OmegaBaryon           0.0
+HubbleParam           1.0
+
+
+%---- Output frequency and output paramaters
+
+OutputListOn              0
+OutputListFilename        out
+TimeBetSnapshot           0.1
+TimeOfFirstSnapshot       0.0
+TimeBetStatistics         0.1
+NumFilesPerSnapshot       1
+NumFilesWrittenInParallel 1
+TimeBetTurbSpectrum       0.1
+
+
+%---- Accuracy of time integration
+
+TypeOfTimestepCriterion  0
+ErrTolIntAccuracy        0.025 
+CourantFac               0.2
+%MaxRMSDisplacementFac    0.2
+MaxSizeTimestep          1e-1
+MinSizeTimestep          0
+%EntropyTolFactor         0.05    % only used for cold-flow treatment without mach-numbers
+
+
+
+%---- Treatment of empty space and temperature limits
+
+MinimumDensityOnStartUp               0.
+LimitUBelowThisDensity                0.
+LimitUBelowCertainDensityToThisValue  0.
+
+InitGasTemp            0.
+MinGasTemp             0.
+MinEgySpec             0.
+
+
+%---- Tree algorithm, force accuracy, domain update frequency
+
+TypeOfOpeningCriterion       1
+ErrTolTheta                  0.7
+ErrTolForceAcc               0.0025
+%TreeDomainUpdateFrequency    0.1
+
+
+%---- Initial density estimate
+
+DesNumNgb              32
+MaxNumNgbDeviation     2
+
+
+%---- System of units
+
+UnitLength_in_cm         1.
+UnitMass_in_g            1.
+UnitVelocity_in_cm_per_s 1.
+GravityConstantInternal  0
+
+
+%---- Gravitational softening lengths
+
+GasSoftFactor      1.5
+
+SofteningTypeOfPartType0   1
+SofteningTypeOfPartType1   1
+SofteningTypeOfPartType2   1
+SofteningTypeOfPartType3   1
+SofteningTypeOfPartType4   1
+SofteningTypeOfPartType5   1
+
+SofteningComovingType0   1.0e-4  % XXX change with resolution
+SofteningComovingType1   0
+SofteningComovingType2   0
+SofteningComovingType3   0
+SofteningComovingType4   0
+SofteningComovingType5   0
+
+SofteningMaxPhysType0   1.0e-4
+SofteningMaxPhysType1   0
+SofteningMaxPhysType2   0
+SofteningMaxPhysType3   0
+SofteningMaxPhysType4   0
+SofteningMaxPhysType5   0
+
+
+IsoSoundSpeed   1.
+%TargetGasMass   2.03490e-05
+%RefinementCriterion   1
+%DerefinementCriterion 1
+
+
+MultipleDomains                          4 % 16
+TopNodeFactor                            2 %  8 % 1
+%MaxTimeBinsWithoutDomainDecomposition   5
+
+ActivePartFracForNewDomainDecomp 0.3 % 0.8
+

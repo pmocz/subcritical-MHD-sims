@@ -1,0 +1,8 @@
+
+arepo/
+arepoG/
+
+writeup/*-eps-converted-to.pdf
+writeup/*.aux
+writeup/*.log
+writeup/*.gz
